@@ -1,0 +1,633 @@
+{
+  "schema": 1,
+  "version": 2026102101,
+  "sites": {
+    "qwen": {
+      "id": "qwen",
+      "name": "Qwen",
+      "hosts": [
+        "chat.qwen.ai"
+      ],
+      "newChatUrl": "https://chat.qwen.ai/",
+      "inputKind": "textarea",
+      "selectors": {
+        "input": [
+          "textarea.message-input-textarea",
+          "textarea[placeholder]"
+        ],
+        "sendButton": [
+          "button.send-button",
+          "button[aria-label='Send']"
+        ],
+        "stopButton": [
+          "button.stop-button",
+          "button[aria-label='Stop']"
+        ],
+        "assistantMessage": [
+          ".response-message-content.phase-answer",
+          ".chat-response-message [class*='response-message-content']"
+        ],
+        "reasoningBlock": [
+          "[class*='thinking-status-card']",
+          "[class*='phase-think']"
+        ],
+        "loginRequired": [
+          "a[href*='/auth']",
+          "button[class*='login-button']",
+          "a[class*='login']"
+        ],
+        "captcha": [
+          "iframe[src*='captcha']",
+          "#nc_1_wrapper",
+          "[class*='captcha']"
+        ],
+        "errorBanner": [
+          "[role='alert']",
+          ".ant-message-notice",
+          ".ant-notification-notice",
+          "[class*='toast']"
+        ]
+      },
+      "textPatterns": {
+        "rateLimit": [
+          "rate limit",
+          "too many requests",
+          "reached (your|the) .*limit",
+          "usage limit",
+          "try again later",
+          "đã đạt (đến )?giới hạn",
+          "hết lượt",
+          "quá nhiều yêu cầu",
+          "thử lại sau"
+        ],
+        "pageError": [
+          "something went wrong",
+          "an error occurred",
+          "network error",
+          "đã xảy ra lỗi",
+          "có lỗi xảy ra",
+          "đã xảy ra sự cố"
+        ],
+        "promptTooLong": [
+          "too long",
+          "exceeds the (maximum|limit)",
+          "message is too large",
+          "quá dài"
+        ]
+      },
+      "stripSelectors": [
+        "button",
+        ".qwen-markdown-code-header",
+        "svg"
+      ],
+      "rawMarkdown": true,
+      "timeouts": {
+        "startMs": 30000,
+        "stableMs": 1500,
+        "turnMs": 300000
+      },
+      "upload": {
+        "method": "drop",
+        "input": [],
+        "dropZone": [
+          ".message-input-container"
+        ],
+        "pickerSteps": [],
+        "chip": [
+          ".file-card-list .fileitem-btn",
+          ".vision-item-container"
+        ],
+        "composer": [
+          ".message-input-container"
+        ],
+        "uploading": [
+          ".fileitem-loading-icon"
+        ],
+        "error": [
+          ".fileitem-btn [class*='error']",
+          ".ant-message-error"
+        ],
+        "consentDialog": [],
+        "accepts": [
+          ".md",
+          ".txt",
+          ".pdf",
+          ".doc",
+          ".docx",
+          ".png",
+          ".jpg",
+          ".jpeg",
+          ".webp",
+          ".gif",
+          ".js",
+          ".ts",
+          ".tsx",
+          ".jsx",
+          ".py",
+          ".java",
+          ".go",
+          ".rs",
+          ".c",
+          ".cpp",
+          ".h",
+          ".cs",
+          ".rb",
+          ".php",
+          ".kt",
+          ".swift",
+          ".sql",
+          ".json",
+          ".yaml",
+          ".yml",
+          ".toml",
+          ".xml",
+          ".html",
+          ".css",
+          ".sh"
+        ]
+      },
+      "modelLabel": [
+        {
+          "selector": [
+            ".wms-trigger__text"
+          ]
+        },
+        {
+          "selector": [
+            ".message-input-container .qwen-chat-v2-dropdown-menu-select-label"
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "model",
+          "open": [
+            ".wms-trigger"
+          ],
+          "option": [
+            ".wms-list__item[role='option']"
+          ],
+          "name": [
+            ".wms-list__name-text"
+          ],
+          "selected": {
+            "attr": "aria-selected",
+            "value": "true"
+          },
+          "default": [
+            "Qwen3.7-Plus"
+          ]
+        },
+        {
+          "id": "mode",
+          "open": [
+            ".message-input-container .qwen-chat-v2-dropdown-menu-select-button",
+            ".message-input .qwen-chat-v2-dropdown-menu-select-button"
+          ],
+          "option": [
+            "[role='menu'] [role='menuitem']"
+          ],
+          "selected": {
+            "className": "qwen-chat-v2-dropdown-menu-item-selected"
+          },
+          "key": "index",
+          "default": [
+            "1"
+          ]
+        },
+        {
+          "id": "search",
+          "open": [
+            ".message-input .mode-select-open",
+            ".mode-select-open"
+          ],
+          "option": [
+            ".mode-select-dropdown-menu > [role='menuitem']"
+          ],
+          "name": [
+            ".mode-select-dropdown-item-name"
+          ],
+          "icon": "qwpcicon-online",
+          "locked": [
+            ".qwen-chat-v2-dropdown-menu-item-disabled"
+          ],
+          "selected": {
+            "indicator": [
+              ".message-input .mode-select-current-mode",
+              ".mode-select-current-mode"
+            ]
+          },
+          "default": [
+            "qwpcicon-online"
+          ]
+        }
+      ]
+    },
+    "gemini": {
+      "id": "gemini",
+      "name": "Gemini",
+      "hosts": [
+        "gemini.google.com"
+      ],
+      "newChatUrl": "https://gemini.google.com/app",
+      "inputKind": "contenteditable",
+      "selectors": {
+        "input": [
+          "rich-textarea .ql-editor[contenteditable='true']",
+          ".ql-editor[contenteditable='true'][role='textbox']"
+        ],
+        "sendButton": [
+          "button[aria-label='Gửi tin nhắn']",
+          "button[aria-label='Send message']",
+          "button.send-button"
+        ],
+        "stopButton": [
+          "button[aria-label='Ngừng tạo câu trả lời']",
+          "button[aria-label='Stop response']",
+          "button[aria-label*='Ngừng' i]",
+          "button[aria-label*='Stop' i]"
+        ],
+        "assistantMessage": [
+          "model-response message-content .markdown",
+          "model-response message-content"
+        ],
+        "reasoningBlock": [
+          "model-thoughts",
+          "[class*='thoughts-container']"
+        ],
+        "loginRequired": [
+          "a[href*='accounts.google.com/ServiceLogin']",
+          "a[href*='accounts.google.com/v3/signin']",
+          "[data-test-id='sign-in-button']"
+        ],
+        "captcha": [
+          "iframe[src*='recaptcha']",
+          "#captcha-form"
+        ],
+        "errorBanner": [
+          "snack-bar-container",
+          "mat-snack-bar-container",
+          ".mat-mdc-snack-bar-label"
+        ]
+      },
+      "textPatterns": {
+        "rateLimit": [
+          "rate limit",
+          "too many requests",
+          "reached (your|the) .*limit",
+          "usage limit",
+          "try again later",
+          "đã đạt (đến )?giới hạn",
+          "hết lượt",
+          "quá nhiều yêu cầu",
+          "thử lại sau"
+        ],
+        "pageError": [
+          "something went wrong",
+          "an error occurred",
+          "network error",
+          "đã xảy ra lỗi",
+          "có lỗi xảy ra",
+          "đã xảy ra sự cố"
+        ],
+        "promptTooLong": [
+          "too long",
+          "exceeds the (maximum|limit)",
+          "message is too large",
+          "quá dài"
+        ]
+      },
+      "stripSelectors": [
+        "button",
+        ".code-block-decoration",
+        "sources-carousel",
+        "source-footnote",
+        "sources-list",
+        ".export-sheets-button-container",
+        "svg"
+      ],
+      "codeBlocks": {
+        "block": "code-block",
+        "label": ".code-block-decoration span"
+      },
+      "timeouts": {
+        "startMs": 30000,
+        "stableMs": 1500,
+        "turnMs": 300000
+      },
+      "upload": {
+        "method": "picker",
+        "input": [],
+        "dropZone": [],
+        "pickerSteps": [
+          [
+            "button[aria-label='Nội dung tải lên và công cụ']",
+            "button[aria-label='Open upload file menu']"
+          ],
+          [
+            "[data-test-id='local-images-files-uploader-button']"
+          ]
+        ],
+        "chip": [
+          ".gem-attachment-text",
+          "uploader-file-preview"
+        ],
+        "composer": [
+          "input-area-v2",
+          ".text-input-field"
+        ],
+        "uploading": [
+          "uploader-file-preview mat-progress-spinner",
+          "uploader-file-preview [class*='loading']"
+        ],
+        "error": [
+          "snack-bar-container",
+          "mat-snack-bar-container"
+        ],
+        "consentDialog": [
+          "upload-image-disclaimer-dialog"
+        ],
+        "accepts": [
+          ".md",
+          ".txt",
+          ".pdf",
+          ".png",
+          ".jpg",
+          ".jpeg",
+          ".webp",
+          ".gif",
+          ".js",
+          ".ts",
+          ".tsx",
+          ".jsx",
+          ".py",
+          ".java",
+          ".go",
+          ".rs",
+          ".c",
+          ".cpp",
+          ".h",
+          ".cs",
+          ".rb",
+          ".php",
+          ".kt",
+          ".swift",
+          ".sql",
+          ".json",
+          ".yaml",
+          ".yml",
+          ".toml",
+          ".xml",
+          ".html",
+          ".css",
+          ".sh",
+          ".docx"
+        ]
+      },
+      "modelLabel": [
+        {
+          "selector": [
+            "[data-test-id='bard-mode-menu-button']"
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "model",
+          "open": [
+            "[data-test-id='bard-mode-menu-button']"
+          ],
+          "option": [
+            "gem-menu-item[role='menuitem'][data-test-id^='bard-mode-option']"
+          ],
+          "name": [
+            ".label"
+          ],
+          "locked": [
+            "[data-test-id*='upsell']"
+          ],
+          "selected": {
+            "className": "selected"
+          },
+          "key": {
+            "attr": "data-mode-id"
+          },
+          "default": [
+            "56fdd199312815e2"
+          ]
+        },
+        {
+          "id": "thinking",
+          "open": [
+            "[data-test-id='bard-mode-menu-button']"
+          ],
+          "steps": [
+            {
+              "option": [
+                "gem-menu-item[role='menuitem'][value='thinking_level']"
+              ]
+            }
+          ],
+          "option": [
+            "gem-menu-item[role='menuitem']:not([data-test-id]):not([value])"
+          ],
+          "name": [
+            ".label"
+          ],
+          "selected": {
+            "className": "selected"
+          },
+          "key": "index",
+          "default": [
+            "1"
+          ]
+        }
+      ]
+    },
+    "grok": {
+      "id": "grok",
+      "name": "Grok",
+      "hosts": [
+        "grok.com"
+      ],
+      "newChatUrl": "https://grok.com/",
+      "inputKind": "contenteditable",
+      "selectors": {
+        "input": [
+          ".tiptap.ProseMirror[contenteditable='true']",
+          "form [contenteditable='true']"
+        ],
+        "sendButton": [
+          "button[data-testid='chat-submit']",
+          "button[aria-label='Submit']"
+        ],
+        "stopButton": [
+          "button[aria-label='Stop model response']",
+          "button[aria-label*='Stop' i]"
+        ],
+        "assistantMessage": [
+          "[data-testid='assistant-message']"
+        ],
+        "reasoningBlock": [
+          "[class*='thinking']",
+          "[class*='think-container']"
+        ],
+        "loginRequired": [
+          "a[href*='/sign-in']",
+          "a[href*='accounts.x.ai/sign-in']"
+        ],
+        "captcha": [
+          "iframe[src*='challenges.cloudflare.com']",
+          "iframe[src*='captcha']"
+        ],
+        "errorBanner": [
+          "[data-sonner-toast]",
+          "[role='alert']"
+        ]
+      },
+      "textPatterns": {
+        "rateLimit": [
+          "rate limit",
+          "too many requests",
+          "reached (your|the) .*limit",
+          "usage limit",
+          "try again later",
+          "đã đạt (đến )?giới hạn",
+          "hết lượt",
+          "quá nhiều yêu cầu",
+          "thử lại sau"
+        ],
+        "pageError": [
+          "something went wrong",
+          "an error occurred",
+          "network error",
+          "đã xảy ra lỗi",
+          "có lỗi xảy ra",
+          "đã xảy ra sự cố"
+        ],
+        "promptTooLong": [
+          "too long",
+          "exceeds the (maximum|limit)",
+          "message is too large",
+          "quá dài"
+        ]
+      },
+      "stripSelectors": [
+        "button",
+        "[data-testid='code-block'] > div > div:first-child .font-mono",
+        "svg"
+      ],
+      "rawMarkdown": true,
+      "codeBlocks": {
+        "block": "[data-testid='code-block']",
+        "label": "span.font-mono"
+      },
+      "timeouts": {
+        "startMs": 30000,
+        "stableMs": 1500,
+        "turnMs": 300000
+      },
+      "upload": {
+        "method": "input",
+        "input": [
+          "input[type='file'][name='files']",
+          "form input[type='file']"
+        ],
+        "dropZone": [
+          "form"
+        ],
+        "pickerSteps": [],
+        "chip": [],
+        "composer": [
+          "form"
+        ],
+        "uploading": [
+          "form [class*='animate-spin']"
+        ],
+        "error": [
+          "[data-sonner-toast]"
+        ],
+        "consentDialog": [],
+        "accepts": [
+          ".md",
+          ".txt",
+          ".pdf",
+          ".doc",
+          ".docx",
+          ".png",
+          ".jpg",
+          ".jpeg",
+          ".webp",
+          ".gif",
+          ".js",
+          ".ts",
+          ".tsx",
+          ".jsx",
+          ".py",
+          ".java",
+          ".go",
+          ".rs",
+          ".c",
+          ".cpp",
+          ".h",
+          ".cs",
+          ".rb",
+          ".php",
+          ".kt",
+          ".swift",
+          ".sql",
+          ".json",
+          ".yaml",
+          ".yml",
+          ".toml",
+          ".xml",
+          ".html",
+          ".css",
+          ".sh"
+        ]
+      },
+      "modelLabel": [
+        {
+          "selector": [
+            "#model-select-trigger"
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "model",
+          "open": [
+            "#model-select-trigger"
+          ],
+          "openWith": "pointer",
+          "option": [
+            "[role='menuitemradio']"
+          ],
+          "name": [
+            "span.truncate"
+          ],
+          "lockedText": "Requires|SuperGrok|Upgrade",
+          "selected": {
+            "attr": "aria-checked",
+            "value": "true"
+          },
+          "key": "svg",
+          "default": [
+            "path:M11.5432 2.33207C12.8435"
+          ]
+        }
+      ],
+      "quota": {
+        "url": "/rest/rate-limits",
+        "method": "POST",
+        "body": {
+          "requestKind": "DEFAULT",
+          "modelName": "fast"
+        },
+        "remaining": "remainingQueries",
+        "total": "totalQueries",
+        "wait": "waitTimeSeconds"
+      }
+    }
+  }
+}
